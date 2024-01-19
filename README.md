@@ -38,22 +38,22 @@ Before you dive into the magical world of Ice Nation and its intriguing characte
 ### Setting Up Your Local Environment 🛠️
 
 1. **Clone the Repository**:
-   \```bash
+   ```bash
    git clone https://github.com/BriefcaseCo/80hdhobbyblog.com.git
    cd 80hdhobbyblog.com
-   \```
+   ```
 
 2. **Using Node Version Manager (nvm)**:
    We're working with Node v18, so let's get you on the right track:
-   \```bash
+   ```bash
    nvm use 18
-   \```
+   ```
 
 3. **Starting the Development Server**:
    Fire up the server and see the magic happen:
-   \```bash
+   ```bash
    npm start
-   \```
+   ```
 
 ## Basic Git Workflow 🔄
 
@@ -61,33 +61,33 @@ To keep our repository clean and organized, here's a simple workflow:
 
 1. **Pull the Latest Changes**:
    Always start with the latest version:
-   \```bash
+   ```bash
    git pull origin main
-   \```
+   ```
 
 2. **Create a New Branch**:
    Let's keep the `main` branch clean. Create a new branch for your work:
-   \```bash
+   ```bash
    git checkout -b your-branch-name
-   \```
+   ```
 
 3. **Add Your Changes**:
    Made some awesome updates? Great! Add them to your branch:
-   \```bash
+   ```bash
    git add .
-   \```
+   ```
 
 4. **Commit Your Changes**:
    Leave a note on what you did:
-   \```bash
+   ```bash
    git commit -m "A brief description of your changes"
-   \```
+   ```
 
 5. **Push to GitHub**:
    Share your work with the world:
-   \```bash
+   ```bash
    git push origin your-branch-name
-   \```
+   ```
 
 6. **Create a Pull Request**:
    Head over to [GitHub Repo](https://github.com/BriefcaseCo/80hdhobbyblog.com) and open a pull request from your branch to `main`.
