@@ -17,18 +17,7 @@ function InteractiveMapComponent() {
     return (
         <div id="interactive-map" className="interactive-map my-8">
             <h3 className="text-3xl font-bold text-center mb-6" style={{ color: '#3b82f6' }}>Explore the Ice Nation</h3>
-            <MapContainer center={centerPosition} zoom={13} scrollWheelZoom={false} style={{ height: '400px', borderRadius: '8px' }}>
-                <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
-                {/* You can add Markers, Popups, or other components here */}
-                <Marker position={centerPosition}>
-                    <Popup>
-                        The heart of the Ice Nation. <br /> Explore its mysteries!
-                    </Popup>
-                </Marker>
-            </MapContainer>
+        <p>Insert map here...</p>
         </div>
     );
 }
