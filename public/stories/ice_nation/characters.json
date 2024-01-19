@@ -1,0 +1,57 @@
+{
+    "Benjamín": {
+        "description": "Main protagonist, moved into the Ice Nation, excited for new beginnings.",
+        "physical_traits": "Not specifically described",
+        "image_description": "male, friendly, approachable",
+        "image": "benjamin.png"
+    },
+    "Trache": {
+        "description": "Benjamín's close friend, loves herbs and Eminem's music.",
+        "physical_traits": "Not specifically described",
+        "image_description": "male, casual, music lover",
+        "image": "trache.png" 
+    },
+    "Tai": {
+        "description": "Resident of Ice Nation, known for complex relationships.",
+        "physical_traits": "Not specifically described",
+        "image_description": "female, confident, unpredictable",
+        "image": "tai.png" 
+    },
+    "OnlyDan": {
+        "description": "Eccentric character, thrill-seeker, joined the trio later.",
+        "physical_traits": "Not specifically described",
+        "image_description": "male, quirky, adventurous",
+        "image": "nophoto.png" 
+    },
+    "Vomitron": {
+        "description": "Embodies chaos, often reckless and terrified.",
+        "physical_traits": "Not specifically described",
+        "image_description": "female, volatile, dramatic",
+        "image": "nophoto.png" 
+    },
+    "Wiggles": {
+        "description": "Known for peculiar habits and unsettling rumors.",
+        "physical_traits": "Not specifically described",
+        "image_description": "female, eccentric, unique",
+        "image": "nophoto.png" 
+    },
+    "Tigger": {
+        "description": "Eccentric and volatile, lives in her own world.",
+        "physical_traits": "Not specifically described",
+        "image_description": "female, eccentric, otherworldly",
+        "image": "nophoto.png" 
+    },
+    "Bianca": {
+        "description": "Benjamín's transformed identity, a moment of change.",
+        "physical_traits": "Hair extensions, changed appearance",
+        "image_description": "transformed male, expressive, different",
+        "image": "nophoto.png"
+    },
+    "Chippie": {
+        "description": "Challenges Trache, leading to a comical duel.",
+        "physical_traits": "Not specifically described",
+        "image_description": "male, confrontational, comical",
+        "image": "nophoto.png" 
+    }
+}
+
