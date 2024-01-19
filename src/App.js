@@ -1,60 +1,93 @@
-import React, { useState, useRef, useEffect } from 'react';
-import KeyFeatures from './components/KeyFeatures';
-import Testimonials from './components/Testimonials';
-import TechnicalDetails from './components/TechnicalDetails';
-import PersonalIntroduction from './components/PersonalIntroduction';
-import ElevateComponent from './components/ElevateComponent';
-import PricingComponent from './components/PricingComponent';
-import CallToActionComponent from './components/CallToActionComponent';
-import FAQComponent from './components/FAQComponent';
-import Footer from './components/Footer';
-import InstagramVideoGallery from './components/InstagramVideoGallery'; // Adjust the import path as necessary
-import TeamComponent from './components/TeamComponent'
-import Hero from './components/Hero'
-import MarkdownCard from './components/MarkdownCard';
+import React, { useState, useEffect } from 'react';
+import HeaderComponent from './components/HeaderComponent';
+import StoryNavigationComponent from './components/StoryNavigationComponent';
+import ChapterComponent from './components/ChapterComponent';
+import FooterComponent from './components/FooterComponent';
+import AudioPlayerComponent from './components/AudioPlayerComponent';
+import ImageGalleryComponent from './components/ImageGalleryComponent';
+import StoryCoverComponent from './components/StoryCoverComponent';
+import CharacterProfileComponent from './components/CharacterProfileComponent';
+import InteractiveMapComponent from './components/InteractiveMapComponent';
+import AboutTheAuthorComponent from './components/AboutTheAuthorComponent';
+import SocialMediaLinksComponent from './components/SocialMediaLinksComponent';
+import StorySelectorComponent from './components/StorySelectorComponent';
+import FeedbackComponent from './components/FeedbackComponent';
+import ContactFormComponent from './components/ContactFormComponent';
+import NavigationMenu from './components/NavigationMenu'; // Import NavigationMenu component
 
-const App = () => {
-  const markdownRef = useRef(null);
-  const [showMarkdown, setShowMarkdown] = useState(false);
-  const [loadMarkdownContent, setLoadMarkdownContent] = useState(false);
+function App() {
+    const [currentChapter, setCurrentChapter] = useState(1);
+    const [chapterData, setChapterData] = useState(null);
+    const [storyMetadata, setStoryMetadata] = useState(null);
 
-  const handleShowMarkdown = () => {
-    setShowMarkdown(true);
-    setLoadMarkdownContent(true);
-  };
+    useEffect(() => {
+        // Fetch story metadata
+        const fetchStoryMetadata = async () => {
+            try {
+                const response = await fetch('/stories/ice_nation/metadata.json');
+                const metadata = await response.json();
+                setStoryMetadata(metadata);
+            } catch (error) {
+                console.error('Error fetching story metadata:', error);
+            }
+        };
+        fetchStoryMetadata();
+    }, []);
 
-  useEffect(() => {
-    if (showMarkdown && markdownRef.current) {
-      markdownRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [showMarkdown]);
+    useEffect(() => {
+        // Fetch chapter data
+        const fetchChapterData = async () => {
+            try {
+                if (storyMetadata && currentChapter <= storyMetadata.totalChapters) {
+                    const response = await fetch(`/stories/ice_nation/chapters/chapter${currentChapter}.json`);
+                    const data = await response.json();
+                    setChapterData(data);
+                }
+            } catch (error) {
+                console.error('Error fetching chapter data:', error);
+            }
+        };
+        fetchChapterData();
+    }, [currentChapter, storyMetadata]);
 
-  return (
-    <div className="App">
-      <Hero />
-      <PersonalIntroduction />
-      <TeamComponent onDanImageClick={handleShowMarkdown} showMarkdown={showMarkdown} />
-      <PricingComponent />
-      <KeyFeatures />
-      <InstagramVideoGallery />
-      <Testimonials />
-      <CallToActionComponent />
-      <FAQComponent />
-      
-        {showMarkdown && loadMarkdownContent && (
-          <>
-          <div ref={markdownRef}></div>
-            <MarkdownCard filePath="/Email.md" />
-            <MarkdownCard filePath="/THC-RecommendationsReport.md" />
-            <MarkdownCard filePath="/THC-Meeting.md" />
-            
-          </>
-          
-        )}
-      
-      <Footer />
-    </div>
-  );
-};
+    return (
+        <div className="App">
+            <HeaderComponent />
+            <NavigationMenu /> {/* Add the navigation menu */}
+
+            <main>
+                <StorySelectorComponent selectedStory={'Ice Nation'} onSelectStory={(story) => console.log(story)} />
+
+                {storyMetadata && (
+                    <>
+                        <StoryCoverComponent coverImage={`/stories/ice_nation/images/${storyMetadata.coverImage}`} />
+                        <StoryNavigationComponent
+                            totalChapters={storyMetadata.totalChapters}
+                            currentChapter={currentChapter}
+                            onChapterSelect={setCurrentChapter}
+                        />
+                        {chapterData && (
+                            <>
+                                <AudioPlayerComponent audioFile={`/stories/ice_nation/audio/${chapterData.audioFile}`} />
+                                <ChapterComponent chapterData={chapterData} />
+                                <ImageGalleryComponent imagePaths={chapterData.images.map(image => `/stories/ice_nation/images/${image}`)} />
+                            </>
+                        )}
+                        <CharacterProfileComponent />
+                        <InteractiveMapComponent mapImage='/path-to-map-image.png' />
+                    </>
+                )}
+
+                <AboutTheAuthorComponent />
+                <SocialMediaLinksComponent />
+                <FeedbackComponent />
+                <ContactFormComponent />
+            </main>
+
+            <FooterComponent />
+        </div>
+    );
+}
 
 export default App;
+
